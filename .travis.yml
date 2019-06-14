@@ -34,12 +34,14 @@ matrix:
       - sudo apt-get download libasound2-dev:armhf
       - sudo apt-get download libssl-dev:armhf
       - sudo apt-get download libssl1.0.0:armhf
+      - sudo apt-get download libpulse0:armhf
       - sudo apt-get download libpulse-dev:armhf
       - dpkg -x libasound2_*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libssl-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libssl1.0.0*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libasound2-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libpulse-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
+      - dpkg -x libpulse0*.deb $TRAVIS_BUILD_DIR/deps_root/
 
     - name: "x86 Build"
       env:
@@ -52,7 +54,6 @@ matrix:
           - libssl-dev
           - libssl1.0.0      
           - libpulse-dev
-          - libportaudio2
             
 script:
 - rustup component add clippy
