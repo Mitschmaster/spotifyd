@@ -5,6 +5,7 @@ rust:
 sudo: required
 os:
 - linux
+dist: xenial
 
 matrix:
   include:
@@ -29,7 +30,7 @@ matrix:
           - portaudio19-dev
           - libdbus-1-dev
       before_script:
-      - echo "deb [arch=armhf] http://ports.ubuntu.com/ubuntu-ports/ trusty main" | sudo tee -a /etc/apt/sources.list
+      - echo "deb [arch=armhf] http://ports.ubuntu.com/ubuntu-ports/ xenial main" | sudo tee -a /etc/apt/sources.list
       - sudo apt-get update
       - sudo apt-get download libasound2:armhf
       - sudo apt-get download libasound2-dev:armhf
@@ -37,7 +38,7 @@ matrix:
       - sudo apt-get download libssl1.0.0:armhf
       - sudo apt-get download libpulse0:armhf
       - sudo apt-get download libpulse-dev:armhf
-      - sudo apt-get download libjson-c2:armhf
+      - sudo apt-get download libjson-c3:armhf
       - sudo apt-get download libjson-c-dev:armhf
       - sudo apt-get download libdbus-1-3:armhf
       - sudo apt-get download libdbus-1-dev:armhf
@@ -47,7 +48,7 @@ matrix:
       - dpkg -x libasound2-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libpulse-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libpulse0*.deb $TRAVIS_BUILD_DIR/deps_root/
-      - dpkg -x libjson-c2*.deb $TRAVIS_BUILD_DIR/deps_root/
+      - dpkg -x libjson-c3*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libjson-c-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libdbus-1-3*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libdbus-1-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
