@@ -21,6 +21,7 @@ matrix:
       addons:
         apt:
           packages:
+          - multiarch-support
           - gcc-arm-linux-gnueabihf
           - libc6-armhf-cross
           - libc6-dev-armhf-cross
