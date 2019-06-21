@@ -37,15 +37,15 @@ matrix:
       - sudo dpkg --add-architecture armhf
       - sudo apt-get update
 #      - sudo apt-get install libasound2:armhf
-      - sudo apt-get install libasound2-dev:armhf
+      - sudo apt-get -f install libasound2-dev:armhf
 #      - sudo apt-get install libssl1.0.0:armhf
-      - sudo apt-get install libssl-dev:armhf
+      - sudo apt-get -f install libssl-dev:armhf
 #      - sudo apt-get install libpulse0:armhf
-      - sudo apt-get install libpulse-dev:armhf
+      - sudo apt-get -f install libpulse-dev:armhf
 #      - sudo apt-get install libjson-c2:armhf
-      - sudo apt-get install libjson-c-dev:armhf
+      - sudo apt-get -f install libjson-c-dev:armhf
 #      - sudo apt-get install libdbus-1-3:armhf
-      - sudo apt-get install libdbus-1-dev:armhf
+      - sudo apt-get -f install libdbus-1-dev:armhf
 #      - dpkg -x libasound2_*.deb $TRAVIS_BUILD_DIR/deps_root/
 #      - dpkg -x libasound2-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
 #      - dpkg -x libssl1.0.0*.deb $TRAVIS_BUILD_DIR/deps_root/
