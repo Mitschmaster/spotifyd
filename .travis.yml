@@ -33,6 +33,7 @@ matrix:
           - libdbus-1-dev
       before_script:
       - echo "deb [arch=armhf] http://ports.ubuntu.com/ubuntu-ports/ xenial main" | sudo tee -a /etc/apt/sources.list
+      - dpkg --add-architecture=armhf
       - sudo apt-get update
       - sudo apt-get install libasound2:armhf
       - sudo apt-get install libasound2-dev:armhf
