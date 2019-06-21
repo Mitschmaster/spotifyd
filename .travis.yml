@@ -12,7 +12,9 @@ matrix:
     - name: "ARM Build"
       env: 
       - TARGET=arm-unknown-linux-gnueabihf
-      - RUSTFLAGS="-C linker=arm-linux-gnueabihf-gcc -L/usr/arm-linux-gnueabihf/lib -L$TRAVIS_BUILD_DIR/deps_root/usr/lib/arm-linux-gnueabihf -L$TRAVIS_BUILD_DIR/deps_root/lib/arm-linux-gnueabihf"
+#      - RUSTFLAGS="-C linker=arm-linux-gnueabihf-gcc -L/usr/arm-linux-gnueabihf/lib -L$TRAVIS_BUILD_DIR/deps_root/usr/lib/arm-linux-gnueabihf -L$TRAVIS_BUILD_DIR/deps_root/lib/arm-linux-gnueabihf"
+      - RUSTFLAGS="-C linker=arm-linux-gnueabihf-gcc"
+      - LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/arm-linux-gnueabihf/lib:$TRAVIS_BUILD_DIR/deps_root/usr/lib/arm-linux-gnueabihf:$TRAVIS_BUILD_DIR/deps_root/lib/arm-linux-gnueabihf
       - PKG_CONFIG_ALLOW_CROSS=1
       - OPENSSL_DIR=$TRAVIS_BUILD_DIR/deps_root/usr
       - OPENSSL_LIB_DIR=$TRAVIS_BUILD_DIR/deps_root/usr/lib/arm-linux-gnueabihf
@@ -34,8 +36,8 @@ matrix:
       - sudo apt-get update
       - sudo apt-get download libasound2:armhf
       - sudo apt-get download libasound2-dev:armhf
-      - sudo apt-get download libssl-dev:armhf
       - sudo apt-get download libssl1.0.0:armhf
+      - sudo apt-get download libssl-dev:armhf
       - sudo apt-get download libpulse0:armhf
       - sudo apt-get download libpulse-dev:armhf
       - sudo apt-get download libjson-c2:armhf
@@ -43,11 +45,11 @@ matrix:
       - sudo apt-get download libdbus-1-3:armhf
       - sudo apt-get download libdbus-1-dev:armhf
       - dpkg -x libasound2_*.deb $TRAVIS_BUILD_DIR/deps_root/
-      - dpkg -x libssl-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
-      - dpkg -x libssl1.0.0*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libasound2-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
-      - dpkg -x libpulse-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
+      - dpkg -x libssl1.0.0*.deb $TRAVIS_BUILD_DIR/deps_root/
+      - dpkg -x libssl-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libpulse0*.deb $TRAVIS_BUILD_DIR/deps_root/
+      - dpkg -x libpulse-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libjson-c2*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libjson-c-dev*.deb $TRAVIS_BUILD_DIR/deps_root/
       - dpkg -x libdbus-1-3*.deb $TRAVIS_BUILD_DIR/deps_root/
@@ -65,7 +67,8 @@ matrix:
           - libssl1.0.0      
           - libpulse-dev
           - portaudio19-dev
-            
+          - libdbus-1-dev
+          
 script:
 - rustup component add clippy
 - rustup component add rustfmt
