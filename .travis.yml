@@ -21,7 +21,6 @@ matrix:
       addons:
         apt:
           packages:
-          - multiarch-support
           - gcc-arm-linux-gnueabihf
           - libc6-armhf-cross
           - libc6-dev-armhf-cross
@@ -38,7 +37,7 @@ matrix:
       - sudo dpkg --add-architecture armhf
       - sudo apt-get update
 #      - sudo apt-get install libasound2:armhf
-      - sudo apt-get -f install libasound2-dev:armhf
+      - sudo apt-get -f install libasound2-dev:armhf libasound2:armhf libasound2-data:armhf
 #      - sudo apt-get install libssl1.0.0:armhf
       - sudo apt-get -f install libssl-dev:armhf
 #      - sudo apt-get install libpulse0:armhf
